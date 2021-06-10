@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
   <title>Weather App</title>
 </head>
@@ -15,7 +16,13 @@
 <body>
 
 
-  <div class="container"></div>
+  <img class="background-cover cloudy" src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+  <img class="background-cover thunder" src="https://images.unsplash.com/photo-1553984840-ec965a23cddd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" alt="">
+  <img class="background-cover sunny" src="https://images.unsplash.com/photo-1619203802905-50a517f2edbb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80" alt="">
+  <img class="background-cover raining" src="https://images.unsplash.com/photo-1498675090580-573f245af39f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1118&q=80" alt="">
+  <img class="background-cover fog" src="https://images.unsplash.com/photo-1476362555312-ab9e108a0b7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+  <img class="background-cover clear" src="https://images.unsplash.com/photo-1612972806701-9cffb7470ed2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" alt="">
+
 
 
   <div class="search">
@@ -43,22 +50,30 @@
 
 
   <div class="option-type">
-    <p id="hourly">Hourly</p>
-    <p id="daily">Daily</p>
-    <p>Details</p>
+    <p id="hourly" class="hourly-info">Hourly</p>
+    <p id="daily" class="daily-info">Daily</p>
+    <p id="detail" class="details-info">Details</p>
     <p>Precipitation</p>
   </div>
 
   <div class="description">
 
-    <!-- Slider main container -->
-    <div class="swiper-container slide1">
-      <!-- Additional required wrapper -->
 
 
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
+    <div id="carousel1" class="carousel slide slide1" data-interval="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1" class="active"></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2" class="active"></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3" class="active"></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4" class="active"></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="5" class="active"></button>
+      </div>
+
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+
           <% for (let i = 0; i < 4; i++){ %>
           <div class="condition">
             <h3><%= hourlyList[i]%></h3>
@@ -66,8 +81,9 @@
             <p><%= Math.ceil(hourlyTemperature[i]) %><span>&#176;</span>C</p>
           </div>
           <% } %>
+
         </div>
-        <div class="swiper-slide">
+        <div class="carousel-item">
 
           <% for (let i = 4; i < 8; i++){ %>
           <div class="condition">
@@ -77,12 +93,11 @@
           </div>
           <% } %>
 
+
         </div>
 
 
-
-        <div class="swiper-slide">
-
+        <div class="carousel-item">
           <% for (let i = 8; i < 12; i++){ %>
           <div class="condition">
             <h3><%= hourlyList[i]%></h3>
@@ -90,12 +105,11 @@
             <p><%= Math.ceil(hourlyTemperature[i]) %><span>&#176;</span>C</p>
           </div>
           <% } %>
-
-
         </div>
 
-        <div class="swiper-slide">
 
+
+        <div class="carousel-item">
           <% for (let i = 12; i < 16; i++){ %>
           <div class="condition">
             <h3><%= hourlyList[i]%></h3>
@@ -103,13 +117,11 @@
             <p><%= Math.ceil(hourlyTemperature[i]) %><span>&#176;</span>C</p>
           </div>
           <% } %>
-
-
-
         </div>
 
-        <div class="swiper-slide">
 
+
+        <div class="carousel-item">
           <% for (let i = 16; i < 20; i++){ %>
           <div class="condition">
             <h3><%= hourlyList[i]%></h3>
@@ -117,13 +129,11 @@
             <p><%= Math.ceil(hourlyTemperature[i]) %><span>&#176;</span>C</p>
           </div>
           <% } %>
-
-
         </div>
 
 
-        <div class="swiper-slide">
 
+        <div class="carousel-item">
           <% for (let i = 20; i < 24; i++){ %>
           <div class="condition">
             <h3><%= hourlyList[i]%></h3>
@@ -131,72 +141,158 @@
             <p><%= Math.ceil(hourlyTemperature[i]) %><span>&#176;</span>C</p>
           </div>
           <% } %>
-
         </div>
 
+
+
       </div>
-
-
-      <!-- If we need pagination -->
-      <div class="swiper-pagination pagination1"></div>
-
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev prev-slide1"></div>
-      <div class="swiper-button-next next-slide1"></div>
-
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
 
 
 
 
-    <!-- Slider main container -->
-    <div class="swiper-container slide2 notshowed">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-wrapper">
+    <div id="carousel2" class="carousel slide notshowed slide2" data-interval="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
 
-          <div class="swiper-slide">
+          <% for (let i = 0; i < 4; i++){ %>
+          <div class="condition">
+            <h3><%= dailyList[i]%></h3>
+            <img src=<%= dailyIcon[i]%> alt="Weather Icon">
+            <p><%= Math.ceil(dailyTemperature[i]) %><span>&#176;</span>C</p>
+          </div>
+          <% } %>
 
-            <% for (let i = 0; i < 4; i++){ %>
-            <div class="condition">
-              <h3><%= dailyList[i]%></h3>
-              <img src=<%= dailyIcon[i]%> alt="Weather Icon">
-              <p><%= Math.ceil(dailyTemperature[i]) %><span>&#176;</span>C</p>
-            </div>
-            <% } %>
 
+        </div>
+        <div class="carousel-item">
+
+          <% for (let i = 4; i < 7; i++){ %>
+          <div class="condition">
+            <h3><%= dailyList[i]%></h3>
+            <img src=<%= dailyIcon[i]%> alt="Weather Icon">
+            <p><%= Math.ceil(dailyTemperature[i]) %><span>&#176;</span>C</p>
+          </div>
+          <% } %>
+
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+
+
+    <div id="carousel3" class="carousel slide slide3 notshowed" data-interval="false">
+      <div class="carousel-indicators notshowed">
+        <button type="button" data-bs-target="#carousel3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carousel3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carousel3" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carousel3" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+
+          <div class="detail-container">
+            <h1>Rain</h1>
+            <p>Rain is liquid precipitation: water falling from the sky. Raindrops fall to Earth when clouds become saturated,
+              or filled, with water droplets. Millions of water droplets bump into each other as they gather in a cloud.
+              When a small water droplet bumps into a bigger one, it condenses, or combines, with the larger one.
+              As this continues to happen, the droplet gets heavier and heavier. When the water droplet becomes too heavy to continue floating around in the cloud, it falls to the ground. </p>
           </div>
 
-          <div class="swiper-slide">
+        </div>
+        <div class="carousel-item">
+          <div class="detail-container">
+            <h1>Cloudy</h1>
+            <p>When the sky is cloudy, it's so full of clouds that you can't see the sun. A cloudy day isn't ideal for a trip to the beach,
+              and a cloudy night isn't great for star gazing.
+              A cloudy sky tells you that rain's on the way, while a cloudy pond or a cloudy glass of water isn't translucent — you can't see through it.
+              You can also describe an issue, thought, or memory as cloudy when it's vague or half-remembered or unclear.
+              Cloudy comes from the Old English word clud, "mass of rock," and later "cloud," based on the way a cloud can resemble a rock or hill.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="detail-container">
+            <h1>Haze</h1>
+            <p>Haze is an atmospheric phenomenon where dust, smoke, and dry particles in the air obscure the sky’s clarity.
+              When seen from afar, and depending upon the direction of view, haze can have a bluish or brownish tint.
+              Various activities such as farming, vehicle traffic, and wildfires can create a pollutant-clouded atmosphere.
+              The World Meteorological Organization (WMO) categorizes atmospheric obscuration by a list of different types.
+              These include: haze, fog, ice fog, steam fog, mist, smoke, volcanic ash, dust, sand, and snow.</p>
+          </div>
 
-            <% for (let i = 4; i < 7; i++){ %>
-            <div class="condition">
-              <h3><%= dailyList[i]%></h3>
-              <img src=<%= dailyIcon[i]%> alt="Weather Icon">
-              <p><%= Math.ceil(dailyTemperature[i]) %><span>&#176;</span>C</p>
-            </div>
-            <% } %>
+        </div>
 
+        <div class="carousel-item">
+          <div class="detail-container">
+            <h1>Sunny</h1>
+            <p>Sunny weather days are days when there are very little or no clouds in the sky. We usually experience more sunny days in the summer when the days are warmer.
+              This is the reason we enjoy spending more time outside in the summer. However, the Sun’s rays are very powerful and we need to protect our
+              skin with sunscreen and our eyes with hats and sunglasses when we are out in the Sun.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+
+          <div class="detail-container">
+            <h1>Thunder</h1>
+            <p>Thunderstorm, a violent short-lived weather disturbance that is almost always associated with lightning, thunder, dense clouds,
+              heavy rain or hail, and strong gusty winds. Thunderstorms arise when layers of warm, moist air rise in a large, swift updraft to
+              cooler regions of the atmosphere. There the moisture contained in the updraft condenses to form towering cumulonimbus clouds and,
+              eventually, precipitation. Columns of cooled air then sink earthward, striking the ground with strong downdrafts and horizontal winds.
+              At the same time, electrical charges accumulate on cloud particles (water droplets and ice). Lightning discharges occur when the
+              accumulated electric charge becomes sufficiently large. </p>
           </div>
 
         </div>
 
       </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination pagination2"></div>
-
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev prev-slide2"></div>
-      <div class="swiper-button-next next-slide2"></div>
-
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel3" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+
+
+
+
+
+
+
+
+
 
 
   </div>
 
 
-
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script type="text/javascript" src="index.js"></script>

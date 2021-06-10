@@ -10,42 +10,9 @@ body {
   color: black;
 }
 
-.cloudy {
-  background-image: url("https://images.unsplash.com/photo-1592210454359-9043f067919b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
-}
-
-.thunder {
-  background-image: url("https://images.unsplash.com/photo-1553984840-ec965a23cddd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80");
-}
-
-.sunny {
-  background-image: url("https://images.unsplash.com/photo-1619203802905-50a517f2edbb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80");
-}
-
-.raining {
-  background-image: url("https://images.unsplash.com/photo-1593981211728-41e4e796ec96?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80");
-}
-
-.fog {
-  background-image: url("https://images.unsplash.com/photo-1476362555312-ab9e108a0b7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
-}
-
-.clear{
-  background-image: url("https://images.unsplash.com/photo-1612972806701-9cffb7470ed2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80");
-}
 
 .background-image {
   background-color: black;
-}
-
-.container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  opacity: 0.8;
 }
 
 .search {
@@ -69,15 +36,27 @@ body {
   box-sizing: border-box;
 }
 
+
+.background-cover{
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  opacity: 0.8;
+}
+
+
+
 .upper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .upper-left {
   font-size: 1.5rem;
   margin-left: 10%;
+  text-align: center;
 }
 
 .upper-right {
@@ -89,17 +68,75 @@ body {
   margin-top: 0;
 }
 
-.upper-right {
-  font-size: 3rem;
+.upper-right h1{
+  font-size: 4rem
+}
+
+.upper-right p{
+  font-size:2rem;
 }
 
 .option-type {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
+  font-size: 1.2rem;
   letter-spacing: 3px;
   width: 50%;
-  margin: 0 auto;
+  margin: 2rem auto;
+  position: relative;
+}
+
+.option-type p{
+  cursor: pointer;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0 1rem;
+}
+
+.option-type p:hover{
+  font-weight: 700;
+}
+
+
+.hourly-info, .daily-info, .details-info{
+  position:relative;
+}
+
+
+.hourly-info::before, .daily-info::before, .details-info::before{
+  background-color: rgba(0, 0, 0, 1);
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  border-radius: 5px;
+  display:flex;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  width: 260px;
+  height: 60px;
+  bottom: 0;
+}
+
+.hourly-info::before{
+  content: 'This is hourly report of weather !';
+  left: -70%;
+}
+
+.daily-info::before{
+  content: 'This is daily report of weather !';
+  left: -88%;
+  }
+
+.details-info::before{
+  content: "Explanation about the weather !";
+  left:-62%;
+}
+
+.hourly-info:hover::before, .daily-info:hover::before, .details-info:hover:before{
+  opacity: 1;
+  transform: translateY(-30px);
 }
 
 .description{
@@ -115,17 +152,32 @@ body {
 }
 
 
-.swiper-container, .swiper-container2 {
+.slide1, .slide2, .slide3 {
   width: 80%;
   height: 250px;
   margin:  0 auto;
 }
 
-.swiper-slide {
-  display: flex;
+
+.carousel-item {
   justify-content: center;
 }
 
+.active{
+  display: flex !important;
+}
+
+.carousel-item-next, .carousel-item-prev, .carousel-item.active{
+  display: flex;
+}
+
+.carousel-control-prev{
+  left: -65px;
+}
+
+.carousel-control-next{
+  right: -65px;
+}
 
 .condition {
   text-align: center;
@@ -134,4 +186,23 @@ body {
   align-items: center;
   justify-content: center;
   margin: 2rem 5% 1rem 5%;
+}
+
+.condition h3{
+  font-size: 1rem;
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 60%;
+  line-height: 2
+  cursor:context-menu;
+}
+
+.detail-container:hover{
+  background-color:rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
